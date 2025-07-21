@@ -614,22 +614,6 @@ loginForm.addEventListener('submit', function(e) {
         ProtocolHandlerAreYouInstalled: {
             play: {
                 content: robloxIcon + "<p>Falta pouco para voc&#xEA; entrar na experi&#xEA;ncia!</p>",
-                buttonText: "Baixe e instale o Roblox",
-                footerContent: "<a href='https://assetgame.roblox.com/pt/game/help'class= 'text-name small'
-target='_blank' >Clique aqui para obter ajuda</a> "
-            },
-            studio: {
-                content: studioIcon +  "<p>Comece a criar suas pr&#xF3;prias experi&#xEA;ncias!</p>",
-                buttonText: "Baixar o Studio"
-            }
-        },
-        ProtocolHandlerStartingDialog: {
-            play: {
-                content: robloxIcon + "<p>O Roblox est&#xE1; carregando. Prepare-se!</p>"
-            },
-            studio: {
-                content: studioIcon + "<p>Verificando o Roblox Studio...</p>"
-            },
             loader: "<span class='spinner spinner-default'></span>"
         }
     };
@@ -663,7 +647,10 @@ alt="Progress" />
         </div>
         <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
             <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
-                Iniciando o Roblox...
+
+
+
+                
             </div>
             <div id="Waiting" class="PlaceLauncherStatus MadStatusField">Conectando-se com pessoas...</div>
             <div id="StatusBackBuffer" class="PlaceLauncherStatus PlaceLauncherStatusBackBuffer
@@ -675,7 +662,7 @@ MadStatusBackBuffer"></div>
     </div>
 </div>
 <div id="ProtocolHandlerClickAlwaysAllowed"
-     class="ph-clickalwaysallowed"
+     class="ph-clickalwaysallowed" 
      style="display:none;">
     <p class="larger-font-size">
         <span class="icon-moreinfo"></span>
@@ -683,58 +670,7 @@ MadStatusBackBuffer"></div>
 data-delaysrc="https://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Iniciar aplicativo" />OK na caixa de
 diálogo acima para entrar mais rápido em experiências de agora em diante!
     </p>
-</div>
-
-<script type="text/javascript">
-function checkRobloxInstall() {
-             window.location = 'https://www.roblox.com/pt/unsupported?osx=10.5'; return false;
-}
-</script>
-
-    <div id="InstallationInstructions" class="" style="display:none;">
-        <div class="ph-installinstructions">
-            <div class="ph-modal-header">
-                    <span class="icon-close simplemodal-close"></span>
-                    <h3 class="title">Obrigado por visitar a Roblox</h3>
-            </div>
-            <div class="modal-content-container">
-                <div class="ph-installinstructions-body ">
-        <ul class="modal-col-4">
-            <li class="step1-of-4">
-                <h2>1</h2>
-                <p class="larger-font-size">Clique em <strong>RobloxPlayer.exe</strong> para executar o instalador
-Roblox que acabou de ser baixado no seu navegador.</p>
-                <div style="margin-top:60px">
-                    <img data-delaysrc="https://images.rbxcdn.com/bcf5d84d4469c075e6296bfbc4deabb1" />
-                </div>
-            </li>
-            <li class="step2-of-4">
-                <h2>2</h2>
-                <p class="larger-font-size">Clique em <strong>Executar</strong>, quando solicitado pelo seu computador,
-para iniciar o processo de instalação.</p>
-                <img data-delaysrc="https://images.rbxcdn.com/51328932dedb5d8d61107272cc1a27db.png" />
-            </li>
-            <li class="step3-of-4">
-                <h2>3</h2>
-                <p class="larger-font-size">Clique em <strong>OK</strong> depois de instalar o Roblox com sucesso.</p>
-                <img data-delaysrc="https://images.rbxcdn.com/bbdb38de8bb89ecc07730b41666a26a4" />
-            </li>
-            <li class="step4-of-4">
-                <h2>4</h2>
-                <p class="larger-font-size">Depois da instalação, clique em <strong>Entrar</strong>, abaixo, para entrar
-na ação!</p>
-                <div class="VisitButton VisitButtonContinueGLI">
-                    <a class="btn btn-primary-lg disabled btn-full-width">Entrar</a>
-                </div>
-            </li>
-        </ul>
-                </div>
-            </div>
-            <div class="xsmall">
-                O instalador Roblox deve ser baixado em breve. Caso contrário, inicie o <a
-id="GameLaunchManualInstallLink" href="#" class="text-link">download agora.</a>
-            </div>
-        </div>
+</div>  
     </div>
     <div class="InstallInstructionsImage" data-modalwidth="970" style="display:none;"></div>
 

